@@ -1,0 +1,13 @@
+const express = require("express");
+const problemRouter = express.Router();
+const adminMiddleware = require("../middleware/adminMiddleware");
+
+//Create //Fetch //Update //Delete
+//These 3 Routes need admin access
+problemRouter.post("/create", adminMiddleware, createProblem);
+problemRouter.patch("/:id", updateProblem);
+problemRouter.delete("/:id", deleteProblem);
+
+problemRouter.get("/:id", getProblemById);
+problemRouter.get("/", getAllProblem);
+problemRouter.get("/user", solvedAllProblembyUser);
